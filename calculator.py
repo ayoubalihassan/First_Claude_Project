@@ -1,5 +1,3 @@
-# ─── Subroutines (functions) ───────────────────────────────────────────────────
-
 def add(a, b):
     return a + b
 
@@ -11,11 +9,9 @@ def multiply(a, b):
 
 def divide(a, b):
     if b == 0:
-        return "Error: cannot divide by zero"
+        raise ValueError("Cannot divide by zero")
     return a / b
 
-
-# ─── Main program ──────────────────────────────────────────────────────────────
 
 def main():
     print("Simple Calculator")
@@ -32,18 +28,22 @@ def main():
 
     choice = input("\nYour choice (1/2/3/4): ")
 
-    if choice == "1":
-        result = add(a, b)
-    elif choice == "2":
-        result = subtract(a, b)
-    elif choice == "3":
-        result = multiply(a, b)
-    elif choice == "4":
-        result = divide(a, b)
-    else:
-        result = "Error: invalid choice"
+    try:
+        if choice == "1":
+            result = add(a, b)
+        elif choice == "2":
+            result = subtract(a, b)
+        elif choice == "3":
+            result = multiply(a, b)
+        elif choice == "4":
+            result = divide(a, b)
+        else:
+            print("Error: invalid choice")
+            return
+        print(f"\nResult: {result}")
+    except ValueError as e:
+        print(f"\nError: {e}")
 
-    print(f"\nResult: {result}")
 
-
-main()
+if __name__ == "__main__":
+    main()
